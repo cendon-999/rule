@@ -34,7 +34,7 @@ proxy-providers:
 proxies:
   - {name: 直连, type: direct, udp: true}
 
-mixed-port: 7890
+mixed-port: 7893
 authentication:
 - "user:passwd"
 skip-auth-prefixes:
@@ -67,7 +67,7 @@ ntp:
 
 tun:
   enable: true
-  stack: mixed   ##如果内核版本大于v1.19.31，此处可以改为自研协议栈 mips ，理论上性能更好。
+  stack: mips  ##如果内核版本大于v1.19.31，此处可以改为自研协议栈 mips ，理论上性能更好。
   dns-hijack: ["any:53", "tcp://any:53"]
   auto-route: true
   auto-redirect: true
