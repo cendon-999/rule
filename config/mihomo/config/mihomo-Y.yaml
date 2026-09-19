@@ -3,10 +3,10 @@
 rule-anchor:
   P: &P {type: http, interval: 0, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, exclude-filter: "官网|剩余|流量|套餐|订阅|直连|到期时间|GB|Expire Date|Traffic|ExpireDate", proxy: 直连}
   # 节点选择
-  G1: &G1 {type: select, proxies: [默认代理, 香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
-  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
-  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
-  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  G1: &G1 {type: select, proxies: [默认代理, 香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
   S5: &S5 {type: url-test, proxies: [直连, DIRECT], interval: 3600, lazy: true, url: "http://connect.rom.miui.com/generate_204"}
   # 节点筛选
   HK: &HK "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"
@@ -157,21 +157,19 @@ proxy-groups:
   - {name: 狮城策略, <<: *SD, filter: *SG, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/singapore.png"}
   - {name: 美国策略, <<: *SD, filter: *US, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/usa.png"}
   - {name: 欧盟策略, <<: *SD, filter: *EU, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/uk.png"}
-  - {name: 其他节点策略, <<: *SD, filter: *Other, icon: *All}
+  - {name: 其他节点, <<: *SD, filter: *Other, icon: *All}
   - {name: 香港故转, <<: *FB, filter: *HK, icon: *Failover}
   - {name: 日本故转, <<: *FB, filter: *JP, icon: *Failover}
   - {name: 台湾故转, <<: *FB, filter: *TW, icon: *Failover}
   - {name: 狮城故转, <<: *FB, filter: *SG, icon: *Failover}
   - {name: 美国故转, <<: *FB, filter: *US, icon: *Failover}
   - {name: 欧盟故转, <<: *FB, filter: *EU, icon: *Failover}
-  - {name: 其他节点故转, <<: *FB, filter: *Other, icon: *Failover}
   - {name: 香港自动, <<: *URL, filter: *HK, icon: *Auto}
   - {name: 日本自动, <<: *URL, filter: *JP, icon: *Auto}
   - {name: 台湾自动, <<: *URL, filter: *TW, icon: *Auto}
   - {name: 狮城自动, <<: *URL, filter: *SG, icon: *Auto}
   - {name: 美国自动, <<: *URL, filter: *US, icon: *Auto}
   - {name: 欧盟自动, <<: *URL, filter: *EU, icon: *Auto}
-  - {name: 其他节点自动, <<: *URL, filter: *Other, icon: *Auto}
   - {name: 全部手动, <<: *SD, filter: *Exclude, icon: *All}
   - {name: 全部自动, <<: *URL, filter: *Exclude, icon: *Auto}
   - {name: 游戏节点, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/game.png"}
