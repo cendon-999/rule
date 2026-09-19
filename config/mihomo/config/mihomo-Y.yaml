@@ -3,10 +3,10 @@
 rule-anchor:
   P: &P {type: http, interval: 0, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, exclude-filter: "官网|剩余|流量|套餐|订阅|直连|到期时间|GB|Expire Date|Traffic|ExpireDate", proxy: 直连}
   # 节点选择
-  G1: &G1 {type: select, proxies: [默认代理, 香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
-  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
-  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
-  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  G1: &G1 {type: select, proxies: [默认代理, 香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
   S5: &S5 {type: url-test, proxies: [直连, DIRECT], interval: 3600, lazy: true, url: "http://connect.rom.miui.com/generate_204"}
   # 节点筛选
   HK: &HK "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"
@@ -14,7 +14,8 @@ rule-anchor:
   TW: &TW "(?=.*(台|TW|(?i)Taiwan))^((?!(港|韩|新|美)).)*$"
   SG: &SG "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|日|韩|ZJ)).)*$"
   US: &US "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"
-  EU: &EU "(?=.*((?i)europe|(?i)france|(?i)germany|(?i)netherlands|(?i)holland|(?i)italy|(?i)spain|(?i)sweden|(?i)finland|(?i)denmark|(?i)poland|(?i)ireland|(?i)greece|(?i)portugal|(?i)belgium|(?i)austria|(?i)switzerland|(?i)norway|(?i)czech|(?i)romania|(?i)hungary|(?i)luxembourg|(?i)malta|(?i)cyprus|(?i)estonia|(?i)latvia|(?i)lithuania|(?i)slovakia|(?i)slovenia|(?i)croatia|(?i)bulgaria|(?i)united kingdom|(?i)london|(?i)paris|(?i)berlin|(?i)madrid|(?i)amsterdam|(?i)frankfurt|(?i)brussels|(?i)warsaw|(?i)milan|(?i)rome|(?i)vienna|(?i)stockholm|(?i)zurich|欧盟|欧洲|英国|法国|德国|意大利|西班牙|葡萄牙|荷兰|比利时|瑞典|芬兰|丹麦|波兰|捷克|奥地利|瑞士|挪威|爱尔兰|希腊|匈牙利|罗马尼亚|保加利亚|克罗地亚|斯洛伐克|卢森堡|马耳他|塞浦路斯|爱沙尼亚|拉脱维亚|立陶宛|斯洛文尼亚|伦敦|巴黎|柏林|马德里|巴塞罗那|阿姆斯特丹|法兰克福|布鲁塞尔|华沙|米兰|罗马|维也纳|斯德哥尔摩|苏黎世|(?<![A-Za-z])DE(?![A-Za-z])|(?<![A-Za-z])FR(?![A-Za-z])|(?<![A-Za-z])UK(?![A-Za-z])|(?<![A-Za-z])GB(?![A-Za-z])|(?<![A-Za-z])NL(?![A-Za-z])|(?<![A-Za-z])IT(?![A-Za-z])|(?<![A-Za-z])ES(?![A-Za-z])|(?<![A-Za-z])SE(?![A-Za-z])|(?<![A-Za-z])FI(?![A-Za-z])|(?<![A-Za-z])DK(?![A-Za-z])|(?<![A-Za-z])PL(?![A-Za-z])|(?<![A-Za-z])CZ(?![A-Za-z])|(?<![A-Za-z])AT(?![A-Za-z])|(?<![A-Za-z])CH(?![A-Za-z])|(?<![A-Za-z])NO(?![A-Za-z])|(?<![A-Za-z])IE(?![A-Za-z])|(?<![A-Za-z])GR(?![A-Za-z])|(?<![A-Za-z])HU(?![A-Za-z])|(?<![A-Za-z])RO(?![A-Za-z])|(?<![A-Za-z])BG(?![A-Za-z])|(?<![A-Za-z])HR(?![A-Za-z])|(?<![A-Za-z])CY(?![A-Za-z])|(?<![A-Za-z])EE(?![A-Za-z])|(?<![A-Za-z])LV(?![A-Za-z])|(?<![A-Za-z])LT(?![A-Za-z])|(?<![A-Za-z])LU(?![A-Za-z])|(?<![A-Za-z])MT(?![A-Za-z])|(?<![A-Za-z])SK(?![A-Za-z])|(?<![A-Za-z])SI(?![A-Za-z])|(?<![A-Za-z])BE(?![A-Za-z])|(?<![A-Za-z])EU(?![A-Za-z])))^((?!(港|台|日|韩|新|美)).)*$"
+  EU: &EU "(?=.*((?i)europe|(?i)france|(?i)germany|(?i)netherlands|(?i)holland|(?i)italy|(?i)spain|(?i)sweden|(?i)finland|(?i)denmark|(?i)poland|(?i)ireland|(?i)greece|(?i)portugal|(?i)belgium|(?i)austria|(?i)switzerland|(?i)norway|(?i)czech|(?i)romania|(?i)hungary|(?i)luxembourg|(?i)malta|(?i)cyprus|(?i)estonia|(?i)latvia|(?i)lithuania|(?i)slovakia|(?i)slovenia|(?i)croatia|(?i)bulgaria|(?i)united kingdom|(?i)london|(?i)paris|(?i)berlin|(?i)madrid|(?i)amsterdam|(?i)frankfurt|(?i)brussels|(?i)warsaw|(?i)milan|(?i)rome|(?i)vienna|(?i)stockholm|(?i)zurich|(?i)russia|(?i)moscow|(?i)saint petersburg|(?i)st petersburg|(?i)novosibirsk|欧盟|欧洲|英国|法国|德国|意大利|西班牙|葡萄牙|荷兰|比利时|瑞典|芬兰|丹麦|波兰|捷克|奥地利|瑞士|挪威|爱尔兰|希腊|匈牙利|罗马尼亚|保加利亚|克罗地亚|斯洛伐克|卢森堡|马耳他|塞浦路斯|爱沙尼亚|拉脱维亚|立陶宛|斯洛文尼亚|伦敦|巴黎|柏林|马德里|巴塞罗那|阿姆斯特丹|法兰克福|布鲁塞尔|华沙|米兰|罗马|维也纳|斯德哥尔摩|苏黎世|俄罗斯|俄国|莫斯科|圣彼得堡|新西伯利亚|叶卡捷琳堡|(?<![A-Za-z])DE(?![A-Za-z])|(?<![A-Za-z])FR(?![A-Za-z])|(?<![A-Za-z])UK(?![A-Za-z])|(?<![A-Za-z])GB(?![A-Za-z])|(?<![A-Za-z])NL(?![A-Za-z])|(?<![A-Za-z])IT(?![A-Za-z])|(?<![A-Za-z])ES(?![A-Za-z])|(?<![A-Za-z])SE(?![A-Za-z])|(?<![A-Za-z])FI(?![A-Za-z])|(?<![A-Za-z])DK(?![A-Za-z])|(?<![A-Za-z])PL(?![A-Za-z])|(?<![A-Za-z])CZ(?![A-Za-z])|(?<![A-Za-z])AT(?![A-Za-z])|(?<![A-Za-z])CH(?![A-Za-z])|(?<![A-Za-z])NO(?![A-Za-z])|(?<![A-Za-z])IE(?![A-Za-z])|(?<![A-Za-z])GR(?![A-Za-z])|(?<![A-Za-z])HU(?![A-Za-z])|(?<![A-Za-z])RO(?![A-Za-z])|(?<![A-Za-z])BG(?![A-Za-z])|(?<![A-Za-z])HR(?![A-Za-z])|(?<![A-Za-z])CY(?![A-Za-z])|(?<![A-Za-z])EE(?![A-Za-z])|(?<![A-Za-z])LV(?![A-Za-z])|(?<![A-Za-z])LT(?![A-Za-z])|(?<![A-Za-z])LU(?![A-Za-z])|(?<![A-Za-z])MT(?![A-Za-z])|(?<![A-Za-z])SK(?![A-Za-z])|(?<![A-Za-z])SI(?![A-Za-z])|(?<![A-Za-z])BE(?![A-Za-z])|(?<![A-Za-z])EU(?![A-Za-z])|(?<![A-Za-z])RU(?![A-Za-z])))^((?!(港|台|日|韩|新|美)).)*$"
+  Other: &Other "^(?!.*((?i)europe|(?i)france|(?i)germany|(?i)netherlands|(?i)holland|(?i)italy|(?i)spain|(?i)sweden|(?i)finland|(?i)denmark|(?i)poland|(?i)ireland|(?i)greece|(?i)portugal|(?i)belgium|(?i)austria|(?i)switzerland|(?i)norway|(?i)czech|(?i)romania|(?i)hungary|(?i)luxembourg|(?i)malta|(?i)cyprus|(?i)estonia|(?i)latvia|(?i)lithuania|(?i)slovakia|(?i)slovenia|(?i)croatia|(?i)bulgaria|(?i)united kingdom|(?i)london|(?i)paris|(?i)berlin|(?i)madrid|(?i)amsterdam|(?i)frankfurt|(?i)brussels|(?i)warsaw|(?i)milan|(?i)rome|(?i)vienna|(?i)stockholm|(?i)zurich|(?i)russia|(?i)moscow|(?i)saint petersburg|(?i)st petersburg|(?i)novosibirsk|(?i)hong kong|(?i)hongkong|(?i)japan|(?i)tokyo|(?i)osaka|(?i)taiwan|(?i)taipei|(?i)singapore|(?i)america|(?i)united states|(?i)new york|(?i)los angeles|(?i)seattle|(?i)chicago|欧盟|欧洲|英国|法国|德国|意大利|西班牙|葡萄牙|荷兰|比利时|瑞典|芬兰|丹麦|波兰|捷克|奥地利|瑞士|挪威|爱尔兰|希腊|匈牙利|罗马尼亚|保加利亚|克罗地亚|斯洛伐克|卢森堡|马耳他|塞浦路斯|爱沙尼亚|拉脱维亚|立陶宛|斯洛文尼亚|伦敦|巴黎|柏林|马德里|巴塞罗那|阿姆斯特丹|法兰克福|布鲁塞尔|华沙|米兰|罗马|维也纳|斯德哥尔摩|苏黎世|俄罗斯|俄国|莫斯科|圣彼得堡|新西伯利亚|叶卡捷琳堡|港|香港|日本|东京|大阪|京都|台湾|台北|高雄|新加坡|坡|狮城|美|美国|纽约|洛杉矶|旧金山|芝加哥|西雅图|波士顿|华盛顿|(?<![A-Za-z])DE(?![A-Za-z])|(?<![A-Za-z])FR(?![A-Za-z])|(?<![A-Za-z])UK(?![A-Za-z])|(?<![A-Za-z])GB(?![A-Za-z])|(?<![A-Za-z])NL(?![A-Za-z])|(?<![A-Za-z])IT(?![A-Za-z])|(?<![A-Za-z])ES(?![A-Za-z])|(?<![A-Za-z])SE(?![A-Za-z])|(?<![A-Za-z])FI(?![A-Za-z])|(?<![A-Za-z])DK(?![A-Za-z])|(?<![A-Za-z])PL(?![A-Za-z])|(?<![A-Za-z])CZ(?![A-Za-z])|(?<![A-Za-z])AT(?![A-Za-z])|(?<![A-Za-z])CH(?![A-Za-z])|(?<![A-Za-z])NO(?![A-Za-z])|(?<![A-Za-z])IE(?![A-Za-z])|(?<![A-Za-z])GR(?![A-Za-z])|(?<![A-Za-z])HU(?![A-Za-z])|(?<![A-Za-z])RO(?![A-Za-z])|(?<![A-Za-z])BG(?![A-Za-z])|(?<![A-Za-z])HR(?![A-Za-z])|(?<![A-Za-z])CY(?![A-Za-z])|(?<![A-Za-z])EE(?![A-Za-z])|(?<![A-Za-z])LV(?![A-Za-z])|(?<![A-Za-z])LT(?![A-Za-z])|(?<![A-Za-z])LU(?![A-Za-z])|(?<![A-Za-z])MT(?![A-Za-z])|(?<![A-Za-z])SK(?![A-Za-z])|(?<![A-Za-z])SI(?![A-Za-z])|(?<![A-Za-z])BE(?![A-Za-z])|(?<![A-Za-z])EU(?![A-Za-z])|(?<![A-Za-z])RU(?![A-Za-z])|(?<![A-Za-z])HK(?![A-Za-z])|(?<![A-Za-z])JP(?![A-Za-z])|(?<![A-Za-z])TW(?![A-Za-z])|(?<![A-Za-z])SG(?![A-Za-z])|(?<![A-Za-z])US(?![A-Za-z])))(?!.*(官网|剩余|流量|套餐|订阅|到期时间|直连|GB|Expire Date|Traffic|ExpireDate)).*$"
   Exclude: &Exclude "^((?!(官网|剩余|流量|套餐|订阅|到期时间|直连|GB|Expire Date|Traffic|ExpireDate)).)*$"
   # 策略组
   SD: &SD {type: select, include-all: true}
@@ -156,18 +157,21 @@ proxy-groups:
   - {name: 狮城策略, <<: *SD, filter: *SG, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/singapore.png"}
   - {name: 美国策略, <<: *SD, filter: *US, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/usa.png"}
   - {name: 欧盟策略, <<: *SD, filter: *EU, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/uk.png"}
+  - {name: 其他节点策略, <<: *SD, filter: *Other, icon: *All}
   - {name: 香港故转, <<: *FB, filter: *HK, icon: *Failover}
   - {name: 日本故转, <<: *FB, filter: *JP, icon: *Failover}
   - {name: 台湾故转, <<: *FB, filter: *TW, icon: *Failover}
   - {name: 狮城故转, <<: *FB, filter: *SG, icon: *Failover}
   - {name: 美国故转, <<: *FB, filter: *US, icon: *Failover}
   - {name: 欧盟故转, <<: *FB, filter: *EU, icon: *Failover}
+  - {name: 其他节点故转, <<: *FB, filter: *Other, icon: *Failover}
   - {name: 香港自动, <<: *URL, filter: *HK, icon: *Auto}
   - {name: 日本自动, <<: *URL, filter: *JP, icon: *Auto}
   - {name: 台湾自动, <<: *URL, filter: *TW, icon: *Auto}
   - {name: 狮城自动, <<: *URL, filter: *SG, icon: *Auto}
   - {name: 美国自动, <<: *URL, filter: *US, icon: *Auto}
   - {name: 欧盟自动, <<: *URL, filter: *EU, icon: *Auto}
+  - {name: 其他节点自动, <<: *URL, filter: *Other, icon: *Auto}
   - {name: 全部手动, <<: *SD, filter: *Exclude, icon: *All}
   - {name: 全部自动, <<: *URL, filter: *Exclude, icon: *Auto}
   - {name: 游戏节点, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/game.png"}
