@@ -3,10 +3,10 @@
 rule-anchor:
   P: &P {type: http, interval: 0, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, exclude-filter: "官网|剩余|流量|套餐|订阅|直连|到期时间|GB|Expire Date|Traffic|ExpireDate", proxy: 直连}
   # 节点选择
-  G1: &G1 {type: select, proxies: [默认代理, 香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港手动, 日本手动, 台湾手动, 狮城手动, 美国手动, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 直连]}
-  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港手动, 日本手动, 台湾手动, 狮城手动, 美国手动, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 直连]}
-  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 香港手动, 日本手动, 台湾手动, 狮城手动, 美国手动, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 直连]}
-  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 香港手动, 日本手动, 台湾手动, 狮城手动, 美国手动, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 直连]}
+  G1: &G1 {type: select, proxies: [默认代理, 香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 全部自动, 全部手动, 游戏节点, 直连]}
   S5: &S5 {type: url-test, proxies: [直连, DIRECT], interval: 3600, lazy: true, url: "http://connect.rom.miui.com/generate_204"}
   # 节点筛选
   HK: &HK "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"
@@ -14,6 +14,7 @@ rule-anchor:
   TW: &TW "(?=.*(台|TW|(?i)Taiwan))^((?!(港|韩|新|美)).)*$"
   SG: &SG "(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|日|韩|ZJ)).)*$"
   US: &US "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"
+  EU: &EU "(?=.*((?i)europe|(?i)france|(?i)germany|(?i)netherlands|(?i)holland|(?i)italy|(?i)spain|(?i)sweden|(?i)finland|(?i)denmark|(?i)poland|(?i)ireland|(?i)greece|(?i)portugal|(?i)belgium|(?i)austria|(?i)switzerland|(?i)norway|(?i)czech|(?i)romania|(?i)hungary|(?i)luxembourg|(?i)malta|(?i)cyprus|(?i)estonia|(?i)latvia|(?i)lithuania|(?i)slovakia|(?i)slovenia|(?i)croatia|(?i)bulgaria|(?i)united kingdom|(?i)london|(?i)paris|(?i)berlin|(?i)madrid|(?i)amsterdam|(?i)frankfurt|(?i)brussels|(?i)warsaw|(?i)milan|(?i)rome|(?i)vienna|(?i)stockholm|(?i)zurich|欧盟|欧洲|英国|法国|德国|意大利|西班牙|葡萄牙|荷兰|比利时|瑞典|芬兰|丹麦|波兰|捷克|奥地利|瑞士|挪威|爱尔兰|希腊|匈牙利|罗马尼亚|保加利亚|克罗地亚|斯洛伐克|卢森堡|马耳他|塞浦路斯|爱沙尼亚|拉脱维亚|立陶宛|斯洛文尼亚|伦敦|巴黎|柏林|马德里|巴塞罗那|阿姆斯特丹|法兰克福|布鲁塞尔|华沙|米兰|罗马|维也纳|斯德哥尔摩|苏黎世|(?<![A-Za-z])DE(?![A-Za-z])|(?<![A-Za-z])FR(?![A-Za-z])|(?<![A-Za-z])UK(?![A-Za-z])|(?<![A-Za-z])GB(?![A-Za-z])|(?<![A-Za-z])NL(?![A-Za-z])|(?<![A-Za-z])IT(?![A-Za-z])|(?<![A-Za-z])ES(?![A-Za-z])|(?<![A-Za-z])SE(?![A-Za-z])|(?<![A-Za-z])FI(?![A-Za-z])|(?<![A-Za-z])DK(?![A-Za-z])|(?<![A-Za-z])PL(?![A-Za-z])|(?<![A-Za-z])CZ(?![A-Za-z])|(?<![A-Za-z])AT(?![A-Za-z])|(?<![A-Za-z])CH(?![A-Za-z])|(?<![A-Za-z])NO(?![A-Za-z])|(?<![A-Za-z])IE(?![A-Za-z])|(?<![A-Za-z])GR(?![A-Za-z])|(?<![A-Za-z])HU(?![A-Za-z])|(?<![A-Za-z])RO(?![A-Za-z])|(?<![A-Za-z])BG(?![A-Za-z])|(?<![A-Za-z])HR(?![A-Za-z])|(?<![A-Za-z])CY(?![A-Za-z])|(?<![A-Za-z])EE(?![A-Za-z])|(?<![A-Za-z])LV(?![A-Za-z])|(?<![A-Za-z])LT(?![A-Za-z])|(?<![A-Za-z])LU(?![A-Za-z])|(?<![A-Za-z])MT(?![A-Za-z])|(?<![A-Za-z])SK(?![A-Za-z])|(?<![A-Za-z])SI(?![A-Za-z])|(?<![A-Za-z])BE(?![A-Za-z])|(?<![A-Za-z])EU(?![A-Za-z])))^((?!(港|台|日|韩|新|美)).)*$"
   Exclude: &Exclude "^((?!(官网|剩余|流量|套餐|订阅|到期时间|直连|GB|Expire Date|Traffic|ExpireDate)).)*$"
   # 策略组
   SD: &SD {type: select, include-all: true}
@@ -29,7 +30,10 @@ rule-anchor:
   domain_text: &domain_text {type: http, interval: 86400, behavior: domain, format: text}
 
 proxy-providers:
-  HH: {<<: *P, url: "订阅URL"}
+  优质服务商: {<<: *P, url: "优质订阅源地址1", override: {additional-suffix: ' [优]'}}
+  次优服务商: {<<: *P, url: "优质订阅源地址2", override: {additional-suffix: ' [次]'}}
+  备用服务商: {<<: *P, url: "备用订阅源地址", override: {additional-suffix: ' [备]'}}
+  聚合服务商: {<<: *P, url: "自建订阅源地址", override: {additional-prefix: '[自建] '}}
 
 proxies:
   - {name: 直连, type: direct, udp: true}
@@ -42,7 +46,7 @@ skip-auth-prefixes:
 - 192.168.0.0/16
 allow-lan: true
 bind-address: "*"
-ipv6: false
+ipv6: true
 unified-delay: true
 tcp-concurrent: true
 log-level: info
@@ -94,10 +98,11 @@ sniffer:
 dns:
   enable: true
   cache-algorithm: arc
-  ipv6: false
+  ipv6: true
   enhanced-mode: fake-ip
   fake-ip-ttl: 1
   fake-ip-range: 198.18.0.0/16
+  fake-ip-range6: 2001:2::1/48
   fake-ip-filter-mode: blacklist
   default-nameserver:
     - https://223.5.5.5/dns-query
@@ -145,27 +150,35 @@ proxy-groups:
   - {name: OneDrive, <<: *S2, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/onedrive.png"}
   - {name: Apple, <<: *S1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/apple.png"}
   - {name: 漏网之鱼, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/final.png"}
-  - {name: 香港手动, <<: *SD, filter: *HK, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/hongkong.png"}
-  - {name: 日本手动, <<: *SD, filter: *JP, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/japan.png"}
-  - {name: 台湾手动, <<: *SD, filter: *TW, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/taiwan.png"}
-  - {name: 狮城手动, <<: *SD, filter: *SG, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/singapore.png"}
-  - {name: 美国手动, <<: *SD, filter: *US, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/usa.png"}
+  - {name: 香港策略, <<: *SD, filter: *HK, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/hongkong.png"}
+  - {name: 日本策略, <<: *SD, filter: *JP, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/japan.png"}
+  - {name: 台湾策略, <<: *SD, filter: *TW, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/taiwan.png"}
+  - {name: 狮城策略, <<: *SD, filter: *SG, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/singapore.png"}
+  - {name: 美国策略, <<: *SD, filter: *US, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/usa.png"}
+  - {name: 欧盟策略, <<: *SD, filter: *EU, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/uk.png"}
   - {name: 香港故转, <<: *FB, filter: *HK, icon: *Failover}
   - {name: 日本故转, <<: *FB, filter: *JP, icon: *Failover}
   - {name: 台湾故转, <<: *FB, filter: *TW, icon: *Failover}
   - {name: 狮城故转, <<: *FB, filter: *SG, icon: *Failover}
   - {name: 美国故转, <<: *FB, filter: *US, icon: *Failover}
+  - {name: 欧盟故转, <<: *FB, filter: *EU, icon: *Failover}
   - {name: 香港自动, <<: *URL, filter: *HK, icon: *Auto}
   - {name: 日本自动, <<: *URL, filter: *JP, icon: *Auto}
   - {name: 台湾自动, <<: *URL, filter: *TW, icon: *Auto}
   - {name: 狮城自动, <<: *URL, filter: *SG, icon: *Auto}
   - {name: 美国自动, <<: *URL, filter: *US, icon: *Auto}
+  - {name: 欧盟自动, <<: *URL, filter: *EU, icon: *Auto}
   - {name: 全部手动, <<: *SD, filter: *Exclude, icon: *All}
   - {name: 全部自动, <<: *URL, filter: *Exclude, icon: *Auto}
+  - {name: 游戏节点, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/game.png"}
   - {name: 延迟辅助, <<: *S5, icon: *Auto}
   - {name: GLOBAL, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/all.png"}
 
 rules:
+  # 游戏分流：国服直连（延迟最低）；外服走游戏节点（含 UDP）
+  - RULE-SET,games_cn,直连
+  - RULE-SET,games_!cn,游戏节点
+  - RULE-SET,epicgames,游戏节点
   - AND,((RULE-SET,cn!_domain),(DST-PORT,443),(NETWORK,UDP)),REJECT
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
@@ -215,6 +228,9 @@ rule-providers:
   binance_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/binance.mrs"}
   okx_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/okx.mrs"}
   usd_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-cryptocurrency.mrs"}
+  games_cn: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-games@cn.mrs"}
+  games_!cn: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-games-!cn.mrs"}
+  epicgames: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/epicgames.mrs"}
   steamcn_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam@cn.mrs"}
   steam_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/steam.mrs"}
   cn!_domain: {<<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/geolocation-!cn.mrs"}
