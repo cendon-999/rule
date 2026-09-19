@@ -138,6 +138,7 @@ dns:
 
 proxy-groups:
   - {name: 默认代理, <<: *S1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
+  - {name: 网络测试, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"}
   - {name: AI, <<: *S3, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
   - {name: YouTube, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/youtube.png"}
   - {name: Google, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/google.png"}
@@ -169,10 +170,9 @@ proxy-groups:
   - {name: 狮城自动, <<: *URL, filter: *SG, icon: *Auto}
   - {name: 美国自动, <<: *URL, filter: *US, icon: *Auto}
   - {name: 欧盟自动, <<: *URL, filter: *EU, icon: *Auto}
-  - {name: 其他节点, <<: *SD, filter: *Other, icon: *All}
-  - {name: 网络测试, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"}
   - {name: 全部手动, <<: *SD, filter: *Exclude, icon: *All}
   - {name: 全部自动, <<: *URL, filter: *Exclude, icon: *Auto}
+  - {name: 其他节点, <<: *SD, filter: *Other, icon: *All}
   - {name: 游戏节点, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/game.png"}
   - {name: 延迟辅助, <<: *S5, icon: *Auto}
   - {name: GLOBAL, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/all.png"}
