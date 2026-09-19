@@ -157,7 +157,6 @@ proxy-groups:
   - {name: 狮城策略, <<: *SD, filter: *SG, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/singapore.png"}
   - {name: 美国策略, <<: *SD, filter: *US, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/usa.png"}
   - {name: 欧盟策略, <<: *SD, filter: *EU, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/flag/corner/uk.png"}
-  - {name: 其他节点, <<: *SD, filter: *Other, icon: *All}
   - {name: 香港故转, <<: *FB, filter: *HK, icon: *Failover}
   - {name: 日本故转, <<: *FB, filter: *JP, icon: *Failover}
   - {name: 台湾故转, <<: *FB, filter: *TW, icon: *Failover}
@@ -170,6 +169,7 @@ proxy-groups:
   - {name: 狮城自动, <<: *URL, filter: *SG, icon: *Auto}
   - {name: 美国自动, <<: *URL, filter: *US, icon: *Auto}
   - {name: 欧盟自动, <<: *URL, filter: *EU, icon: *Auto}
+  - {name: 其他节点, <<: *SD, filter: *Other, icon: *All}
   - {name: 全部手动, <<: *SD, filter: *Exclude, icon: *All}
   - {name: 全部自动, <<: *URL, filter: *Exclude, icon: *Auto}
   - {name: 游戏节点, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/game.png"}
