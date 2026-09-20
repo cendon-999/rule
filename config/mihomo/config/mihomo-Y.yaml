@@ -138,21 +138,7 @@ dns:
 
 proxy-groups:
   - {name: 默认代理, <<: *S1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
-  - name: 网络测试
-    <<: *SD
-    filter: *Exclude
-    proxies:
-      - 默认代理
-      - 香港策略
-      - 日本策略
-      - 台湾策略
-      - 狮城策略
-      - 美国策略
-      - 欧盟策略
-      - 全部手动
-      - 其他节点
-      - 游戏节点
-    icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"
+  - {name: 网络测试, <<: *G1, include-all: true, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"}
   - {name: AI, <<: *S3, include-all: true, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
   - {name: YouTube, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/youtube.png"}
   - {name: Google, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/google.png"}
