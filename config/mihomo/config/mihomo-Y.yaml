@@ -138,8 +138,61 @@ dns:
 
 proxy-groups:
   - {name: 默认代理, <<: *S1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
-  - {name: 网络测试, <<: *G1, include-all: true, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"}
-  - {name: AI, <<: *S3, include-all: true, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
+  - name: 网络测试
+    type: select
+    include-all: true
+    proxies:
+      - 默认代理
+      - 香港故转
+      - 日本故转
+      - 台湾故转
+      - 狮城故转
+      - 美国故转
+      - 欧盟故转
+      - 香港策略
+      - 日本策略
+      - 台湾策略
+      - 狮城策略
+      - 美国策略
+      - 欧盟策略
+      - 香港自动
+      - 日本自动
+      - 台湾自动
+      - 狮城自动
+      - 美国自动
+      - 欧盟自动
+      - 全部自动
+      - 全部手动
+      - 其他节点
+      - 游戏节点
+    icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"
+  - name: AI
+    type: select
+    include-all: true
+    proxies:
+      - 美国故转
+      - 香港故转
+      - 日本故转
+      - 台湾故转
+      - 狮城故转
+      - 欧盟故转
+      - 香港策略
+      - 日本策略
+      - 台湾策略
+      - 狮城策略
+      - 美国策略
+      - 欧盟策略
+      - 香港自动
+      - 日本自动
+      - 台湾自动
+      - 狮城自动
+      - 美国自动
+      - 欧盟自动
+      - 全部自动
+      - 全部手动
+      - 其他节点
+      - 游戏节点
+    icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"
   - {name: YouTube, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/youtube.png"}
   - {name: Google, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/google.png"}
   - {name: GitHub, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/github.png"}
