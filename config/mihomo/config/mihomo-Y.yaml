@@ -142,6 +142,7 @@ proxy-groups:
     <<: *SD
     filter: *Exclude
     proxies:
+      - 默认代理
       - 香港策略
       - 日本策略
       - 台湾策略
