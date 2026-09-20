@@ -4,9 +4,9 @@ rule-anchor:
   P: &P {type: http, interval: 0, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, exclude-filter: "官网|剩余|流量|套餐|订阅|直连|到期时间|GB|Expire Date|Traffic|ExpireDate", proxy: 直连}
   # 节点选择
   G1: &G1 {type: select, proxies: [默认代理, 香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 欧盟故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 欧盟自动, 全部自动, 全部手动, 其他节点, 游戏节点, 直连]}
-  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 欧盟故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 欧盟自动, 全部自动, 全部手动, 其他节点, 游戏节点, 直连]}
-  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 欧盟故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 欧盟自动, 全部自动, 全部手动, 其他节点, 游戏节点, 直连]}
-  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 欧盟故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 欧盟自动, 全部自动, 全部手动, 其他节点, 游戏节点, 直连]}
+  S1: &S1 {type: select, proxies: [香港故转, 日本故转, 台湾故转, 狮城故转, 美国故转, 欧盟故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 欧盟自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S2: &S2 {type: select, proxies: [日本故转, 香港故转, 台湾故转, 狮城故转, 美国故转, 欧盟故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 欧盟自动, 全部自动, 全部手动, 游戏节点, 直连]}
+  S3: &S3 {type: select, proxies: [美国故转, 香港故转, 日本故转, 台湾故转, 狮城故转, 欧盟故转, 香港策略, 日本策略, 台湾策略, 狮城策略, 美国策略, 欧盟策略, 其他节点, 香港自动, 日本自动, 台湾自动, 狮城自动, 美国自动, 欧盟自动, 全部自动, 全部手动, 游戏节点, 直连]}
   S5: &S5 {type: url-test, proxies: [直连, DIRECT], interval: 3600, lazy: true, url: "http://connect.rom.miui.com/generate_204"}
   # 节点筛选
   HK: &HK "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"
@@ -138,7 +138,17 @@ dns:
 
 proxy-groups:
   - {name: 默认代理, <<: *S1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/select.png"}
-  - {name: 网络测试, <<: *SD, filter: *Exclude, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"}
+  - name: 网络测试
+    <<: *SD
+    filter: *Exclude
+    proxies:
+      - 香港策略
+      - 日本策略
+      - 台湾策略
+      - 狮城策略
+      - 美国策略
+      - 欧盟策略
+    icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/speedtest.png"
   - {name: AI, <<: *S3, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/ai.png"}
   - {name: YouTube, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/youtube.png"}
   - {name: Google, <<: *G1, icon: "https://raw.githubusercontent.com/s0lnce/mofish-icon/refs/heads/main/mihomo/pure/corner/google.png"}
