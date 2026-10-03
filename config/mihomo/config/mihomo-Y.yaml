@@ -134,6 +134,13 @@ dns:
     - rule-set:microsoftcn_domain
     - rule-set:applecn_domain
     - rule-set:steamcn_domain
+    - "+.callofduty.com"
+    - "+.activision.com"
+    - "+.demonware.net"
+    - "+.playstation.com"
+    - "+.playstation.net"
+    - "+.sonyentertainmentnetwork.com"
+    - "+.np.playstation.net"
 
 
 proxy-groups:
