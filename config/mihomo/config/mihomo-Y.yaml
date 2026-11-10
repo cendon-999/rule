@@ -281,8 +281,8 @@ proxy-groups:
 
 rules:
   rules:
-  - DST-PORT,3478,DIRECT        # STUN，打通 NAT 探测
-  - DST-PORT,41641,DIRECT       # Tailscale 直连端口
+  #- DST-PORT,3478,DIRECT        # STUN，打通 NAT 探测
+  #- DST-PORT,41641,DIRECT       # Tailscale 直连端口
   # 游戏分流：国服直连（延迟最低）；外服走游戏节点（含 UDP）
   - RULE-SET,games_cn,直连
   - RULE-SET,games_!cn,游戏节点
